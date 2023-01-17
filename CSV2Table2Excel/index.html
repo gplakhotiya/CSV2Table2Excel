@@ -35,13 +35,10 @@
             read.onloadend = () => {
                 let csv = read.result;
                 table.innerHTML = "";
-                // let csv1 = csv.toString().replace(",,", ", NA ,")
-
                 let rows = csv.split("\n");
                 for (let row of rows) {
                     let clearedRows = row.replaceAll(",,", ", -- ,")
                     let cols = clearedRows.match(/(?:\"([^\"]*(?:\"\"[^\"]*)*)\")|([^\",]+)/g);
-                    // let cols = row.split(",");
                     let tr = table.insertRow();
                     for (let col of cols) {
                         let td = tr.insertCell();
